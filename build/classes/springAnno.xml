@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     ">
+     
+    <!-- 使用w无参构造器创建对象
+    <bean id="user" class="com.gzd.ioc.User"></bean>-->
+    <!--使用静态工厂类创建对象 getUser为静态工厂类的静态方法
+       -->
+    <!--为对象注入属性值，1、构造器注入 -->
+<!--
+    <bean id="user" class="com.gzd.ioc.User" >
+        <constructor-arg name="name" value="haha"></constructor-arg>
+    </bean>
+-->
+    <!--为对象注入属性值，1、set方式注入 -->
+<!--
+    <bean id="setuser" class="com.gzd.ioc.User" p:name="hehehhehehehe"></bean>
+-->
+
+    <!-- 为对象类型 注入，例如dao service-->
+   <!-- <bean id="userdao" class="com.gzd.service.UserDao"></bean>
+    <bean id="userService" class="com.gzd.service.UserService">
+        <property name="userDao" ref="userdao">
+
+        </property>
+
+    </bean>-->
+    <!--使用注解创建对象 隐式的注册 AutowiredAnnotationBeanPostProcessor和CommonAnnotationBeanPostProcessor-->
+    <context:component-scan base-package="com.gzd"></context:component-scan>
+    <!--<context:annotation-config />-->
+</beans>
