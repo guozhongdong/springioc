@@ -1,10 +1,12 @@
 package com.gzd.jdbc;
 
 import com.gzd.ioc.User;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,16 +19,22 @@ import java.util.Map;
  */
 public class JdbcTemplateDemo {
 
+    private ComboPooledDataSource dataSource;
+
+    public void setDataSource(ComboPooledDataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Test
     public void add(){
         //1、加载驱动
-        DriverManagerDataSource dataSource =  new DriverManagerDataSource();
+        /*DriverManagerDataSource dataSource =  new DriverManagerDataSource();
 
         //2、创建数据库连接
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/gzd");
         dataSource.setUsername("gzd");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("123456");*/
 
         //1、插入语句，执行sql语句
         /*String sql = "insert into users values(?,?)";
@@ -58,13 +66,36 @@ public class JdbcTemplateDemo {
         System.out.println(user);*/
 
         //4、 查询一 返回一个集合
-        String sql  = "select * from users";
+       /* String sql  = "select * from users";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         List<Map<String,Object>> list  = jdbcTemplate.queryForList(sql);
-        System.out.println(list);
+        System.out.println(list);*/
 
         //System.out.println(user);
 
+    }
+
+    /*添加用户*/
+    public void addUser (){
+
+        String sql = "insert into users values(?,?)";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        int rows = jdbcTemplate.update(sql,"haha1","1234788");
+    }
+
+    /*添加用户*/
+    public void addSalary(){
+
+        String sql = "update account set salary=salary+? where username='wang'";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        int rows = jdbcTemplate.update(sql,1000);
+    }
+
+    public void delSalary(){
+
+        String sql = "update account set salary=salary-? where username='li'";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        int rows = jdbcTemplate.update(sql,1000);
     }
 }
 

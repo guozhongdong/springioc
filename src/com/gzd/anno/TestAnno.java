@@ -14,7 +14,7 @@ public class TestAnno {
     public void add(){
 
         ApplicationContext context = new ClassPathXmlApplicationContext("springAnno.xml");
-       UserService userService = (UserService) context.getBean("userService");
-       userService.add();
+        UserService userService = (UserService) context.getBean("userService");
+        userService.add();
     }
 }
