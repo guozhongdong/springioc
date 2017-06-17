@@ -19,28 +19,14 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/gzd"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/gzd"/>
         <property name="user" value="gzd"/>
         <property name="password" value="123456"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="mapListExample" class="com.gzd.dbutils.MapListExample" >
         <property name="dataSource" ref="dataSource"></property>
 
-    </bean>
-    <bean id="userDao" class="com.gzd.jdbc.dao.UserDao">
-        <property name="jdbcTemplateDemo" ref="jdbcTemplate"></property>
-    </bean>
-
-    <bean id="userService" class="com.gzd.jdbc.service.UserService">
-
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-
-    <bean id="jdbcTemplate" class="com.gzd.jdbc.JdbcTemplateDemo">
-
-        <property name="dataSource" ref="dataSource"></property>
     </bean>
 
     <bean id="BeanListExample" class="com.gzd.dbutils.BeanListExample">
