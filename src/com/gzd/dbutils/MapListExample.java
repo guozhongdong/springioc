@@ -12,13 +12,18 @@ import java.util.Map;
 public class MapListExample {
 
     private DataSource dataSource;
-
+   // private Logger logger = Logger.getLogger(MapListExample.class);
     public void testDButil(){
+
 
         QueryRunner qr = new QueryRunner(dataSource);
         List result = null;
         try {
             result = qr.query("select * from guestbook",new MapListHandler());
+
+            /*logger.debug(result);
+            logger.isDebugEnabled();
+            logger.info("sql语句打印");*/
         } catch (SQLException e) {
             e.printStackTrace();
         }

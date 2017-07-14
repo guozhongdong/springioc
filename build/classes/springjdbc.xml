@@ -43,5 +43,9 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
+    <bean id="BeanListExample" class="com.gzd.dbutils.BeanListExample">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
 
 </beans>

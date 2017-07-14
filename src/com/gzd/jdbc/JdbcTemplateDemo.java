@@ -1,17 +1,12 @@
 package com.gzd.jdbc;
 
-import com.gzd.ioc.User;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by gzd on 2017/5/20.
@@ -80,7 +75,7 @@ public class JdbcTemplateDemo {
 
         String sql = "insert into users values(?,?)";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        int rows = jdbcTemplate.update(sql,"haha1","1234788");
+        int rows = jdbcTemplate.update(sql,"haha1","1234788111");
     }
 
     /*添加用户*/

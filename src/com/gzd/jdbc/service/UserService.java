@@ -24,7 +24,7 @@ public class UserService {
     public void buy(){
 
         userDao.addSalary();
-        int a = 10/0;   //出现异常 ，事务回滚
+        //int a = 10/0;   //出现异常 ，事务回滚
         userDao.delSalary();
         //System.out.println("service....");
        // userDao.add();
